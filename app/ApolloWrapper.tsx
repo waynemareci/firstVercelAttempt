@@ -12,7 +12,11 @@ import React from "react";
 
 export const starredVar = makeVar([]);
 
-const AppWithApollo = ({ children }: React.PropsWithChildren) => {
+type Props = {
+  children: React.PropsWithChildren
+}
+
+const AppWithApollo = ({ children }: Props) => {
   const { getAccessTokenSilently, isAuthenticated, isLoading, error } =
     useAuth0();
 
