@@ -16,7 +16,7 @@ const nextConfig = {
     ]
   },
   experimental: {
-    serverComponentsExternalPackages: ["graphqlServer"],
+    serverComponentsExternalPackages: ["graphql"],
   },
   env: {
     REACT_APP_AUTH0_DOMAIN: "dev-spxf3pmvngdhjouv.us.auth0.com",
