@@ -9,6 +9,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { Auth0Provider, useAuth0 } from "@auth0/auth0-react";
 import React from "react";
+import { stringify } from "querystring";
 
 export const starredVar = makeVar([]);
 
@@ -25,9 +26,11 @@ const AppWithApollo = ({ children }: React.PropsWithChildren) => {
 
   const authLink = setContext(async (_, { headers }) => {
     // Only try to fetch access token if user is authenticated
+    console.log("isAuthenticated is " + isAuthenticated ? "true" : "false")
     const accessToken = isAuthenticated
       ? await getAccessTokenSilently()
       : undefined;
+      console.log("accessToken is " +  JSON.stringify(accessToken))
     if (accessToken) {
       return {
         headers: {
