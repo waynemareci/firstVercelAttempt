@@ -38,7 +38,7 @@ const typeDefs = `
     state: String!
     location: Point!
     averageStars: Float!
-     @authentication
+     #@authentication
      @cypher(
        statement: "MATCH (this)<-[:REVIEWS]-(r:Review) RETURN avg(r.stars) as avgStars"  
        columnName: "avgStars"
@@ -62,16 +62,16 @@ const typeDefs = `
     name: String!
     reviews: [Review!]! @relationship(type: "WROTE", direction: OUT)
   }
-  extend type User @authorization(
-    validate: [
-      { operations: [CREATE, UPDATE, DELETE], where: { jwt:{ roles_INCLUDES: "admin"}}}
-      { operations: [READ], where: { node: { userId: "$jwt.sub"}}}
+  #extend type User @authorization(
+  #  validate: [
+  #    { operations: [CREATE, UPDATE, DELETE], where: { jwt:{ roles_INCLUDES: "admin"}}}
+  #    { operations: [READ], where: { node: { userId: "$jwt.sub"}}}
       #{ where: { jwt:{ roles_INCLUDES: "admin"}}}
-    ]
+  #  ]
     #filter: [
     #  { operations: [READ], where: {node: {userId: "$jwt.sub"}}}
     #]
-  )
+  #)
   
   type Review {
     reviewId: ID!
@@ -81,13 +81,13 @@ const typeDefs = `
     user: User! @relationship(type: "WROTE", direction: IN)
     business: Business! @relationship(type: "REVIEWS", direction: OUT)
   }
-  extend type Review @authorization(
-    validate: [
+  #extend type Review @authorization(
+  #  validate: [
       #{ where: { jwt:{ roles_INCLUDES: "user"}}},
       #{ where: { jwt:{ roles_INCLUDES: "admin"}}},
-      { operations: [CREATE, UPDATE] when: [AFTER], where: { node: {user: {userId: "$jwt.sub" }}}}
-    ] 
-  )
+  #    { operations: [CREATE, UPDATE] when: [AFTER], where: { node: {user: {userId: "$jwt.sub" }}}}
+  #  ] 
+  #)
 
   type Category {
     name: String!
