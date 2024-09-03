@@ -12,11 +12,7 @@ import React from "react";
 
 export const starredVar = makeVar([]);
 
-type Props = {
-  children: React.PropsWithChildren
-}
-
-const AppWithApollo = ({ children }: Props) => {
+const AppWithApollo = ({ children }: React.PropsWithChildren) => {
   const { getAccessTokenSilently, isAuthenticated, isLoading, error } =
     useAuth0();
 
@@ -119,7 +115,7 @@ export function ApolloWrapper({ children }: React.PropsWithChildren) {
         audience: "https://mareci.com",
       }}
     >
-      <AppWithApollo children={children} />
+      <AppWithApollo>{children}</AppWithApollo>
     </Auth0Provider>
   );
 }
