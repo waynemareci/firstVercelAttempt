@@ -46,7 +46,7 @@ const AppWithApollo = ({ children }: React.PropsWithChildren) => {
 
   function makeClient() {
     const httpLink = new HttpLink({
-      uri: "http://localhost:3000/graphqlServer",
+      uri: "/graphqlServer",
     });
     return new ApolloClient({
       link: authLink.concat(httpLink),
