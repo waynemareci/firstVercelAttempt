@@ -61,7 +61,7 @@ const GET_BUSINESSES_QUERY = gql`
     variables: { selectedCategory },
     //pollInterval: 1500
   });
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p>Error at useQuery call: {error.message}</p>;
   if (loading) return <p>Loading...</p>;
 
   return (
