@@ -144,23 +144,6 @@ const resolvers = {
 // Read our Neo4j connection credentials from environment variables (see .env.local)
 const { NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD } = process.env;
 
-const allowCors = fn => async(req:any, res:any) => {
-  //function allowCors = => async(req:any, res:any) => {
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  // another common pattern
-  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  )
-  if (req.method === 'OPTIONS') {
-    res.status(200).end()
-    return
-  }
-  return await fn(req, res)
-}
 // Create a Neo4j driver instance to connect to Neo4j AuraDB
 const driver = neo4j.driver(
   NEO4J_URI as string,
@@ -199,7 +182,4 @@ const { handleRequest } = createYoga({
   context: async ({ request }) => ({ token: request.headers.get('Authorization') }),
 });
 
-const forExport = allowCors(handleRequest)
-
-export { forExport as GET, forExport as POST}
-//export { handleRequest as GET, handleRequest as POST}
+export { handleRequest as GET, handleRequest as POST}
