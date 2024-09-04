@@ -67,11 +67,7 @@ const GET_BUSINESSES_QUERY = gql`
   return (
     <div>
       {!isAuthenticated && (
-        <button onClick={() => loginWithRedirect({
-          authorizationParams: {
-            redirect_uri:"https://first-vercel-attempt.vercel.app"
-          }
-        })}>Log In</button>
+        <button onClick={() => loginWithRedirect()}>Log In</button>
       )}
       {isAuthenticated && <button onClick={() => logout()}>Log Out</button>}
       <Profile />
