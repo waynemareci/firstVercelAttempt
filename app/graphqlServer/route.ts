@@ -146,8 +146,13 @@ const { NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD } = process.env;
 
 // Create a Neo4j driver instance to connect to Neo4j AuraDB
 const driver = neo4j.driver(
+
+  "neo4j+s://ea8a5e06.databases.neo4j.io",
+  neo4j.auth.basic("neo4j", "TfsQWveJFWWrmG7KBUWl3TXRqOp8dcJa5ouNpGRJdAk")
+  /*
   NEO4J_URI as string,
   neo4j.auth.basic(NEO4J_USERNAME as string, NEO4J_PASSWORD as string)
+  */
 );
 
 const neoSchema = new Neo4jGraphQL({
