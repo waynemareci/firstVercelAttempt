@@ -21,7 +21,7 @@ const AppWithApollo = ({ children }: React.PropsWithChildren) => {
     return <div>Loading...</div>;
   }
   if (error) {
-    return <div>Oops... {error.message}</div>;
+    return <div>Oops... {JSON.stringify(error)}</div>;
   }
 
   const authLink = setContext(async (_, { headers }) => {
