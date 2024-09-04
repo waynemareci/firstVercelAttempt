@@ -78,32 +78,6 @@ const AppWithApollo = ({ children }: React.PropsWithChildren) => {
   );
 };
 
-/*
-function makeClient() {
-  const httpLink = new HttpLink({
-    uri: "http://localhost:3000/graphqlServer",
-    fetchOptions: { cache: "no-store" },
-  });
-
-  return new ApolloClient({
-    cache: new InMemoryCache({
-      typePolicies: {
-        Business: {
-          fields: {
-            isStarred: {
-              read(_, { readField }) {
-                return starredVar().includes(readField("businessId") as never);
-              },
-            },
-          },
-        },
-      },
-    }),
-    link: httpLink,
-  });
-}
-*/
-
 export function ApolloWrapper({ children }: React.PropsWithChildren) {
   return (
     <Auth0Provider
@@ -111,7 +85,6 @@ export function ApolloWrapper({ children }: React.PropsWithChildren) {
       clientId={process.env.REACT_APP_AUTH0_CLIENT_ID as string}
       //domain="dev-spxf3pmvngdhjouv.us.auth0.com"
       //clientId="YlqUnmoHJ1EpT8zgrt7aKPVYJ2fbRZGp"
-      //authorizationParams={{ redirect_uri: window.location.origin }}
       authorizationParams={{
         //redirect_uri: "http://localhost:3000",
         //redirect_uri: window.location.origin ,
