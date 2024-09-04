@@ -113,8 +113,9 @@ export function ApolloWrapper({ children }: React.PropsWithChildren) {
       //clientId="YlqUnmoHJ1EpT8zgrt7aKPVYJ2fbRZGp"
       //authorizationParams={{ redirect_uri: window.location.origin }}
       authorizationParams={{
-        //redirect_uri: "https://first-vercel-attempt.vercel.app",
-        redirect_uri: window.location.origin ,
+        //redirect_uri: "http://localhost:3000",
+        //redirect_uri: window.location.origin ,
+        redirect_uri: "https://first-vercel-attempt.vercel.app/",
         audience: "https://mareci.com",
       }}
     >
